@@ -16,7 +16,7 @@ A comprehensive MATLAB Simulink model of a Parallel Hybrid Electric Vehicle (HEV
 
 1. **Clone Repository**
 
-   git clone https://github.com/<your-username>/Parallel-HEV-Simulation.git\
+   git clone https://github.com/raviteja091>/Parallel-HEV-Simulation.git\
    cd Parallel-HEV-Simulation
 
 1. **Required Toolboxes**
@@ -50,11 +50,9 @@ A comprehensive MATLAB Simulink model of a Parallel Hybrid Electric Vehicle (HEV
 *Replace these placeholders with your actual images in docs/.*
 
 - **System Architecture**\
-  ![Architecture][image:architecture.png]
-- **Subsystem Block Diagram**\
-  ![Block Diagram][image:block\_diagram]
+  ![Architecture](docs/architecture)
 - **Sample Results**\
-  ![Results Overview][image:results\_overview]
+  ![Results Overview](docs/results)
 
 
 **✅ Testing**
