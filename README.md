@@ -52,7 +52,7 @@ A comprehensive MATLAB Simulink model of a Parallel Hybrid Electric Vehicle (HEV
 - **System Architecture**\
   ![Architecture](docs/architecture.jpg)
 - **Sample Results**\
-  ![Results Overview](docs/Results.png)
+  ![Results Overview](docs/Results.jpg)
 
 
 **✅ Testing**
