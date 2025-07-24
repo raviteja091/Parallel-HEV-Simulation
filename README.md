@@ -38,7 +38,7 @@ A comprehensive MATLAB Simulink model of a Parallel Hybrid Electric Vehicle (HEV
    runSimulation;           % Runs default drive cycle\
    runSimulation('FTP');    % Example with FTP drive cycle
 
-1. **Analyze Results**
+**Analyze Results**
 
    After simulation, extract and visualize results:
 
@@ -50,53 +50,18 @@ A comprehensive MATLAB Simulink model of a Parallel Hybrid Electric Vehicle (HEV
 *Replace these placeholders with your actual images in docs/.*
 
 - **System Architecture**\
-  ![Architecture][image:architecture]
+  ![Architecture][image:architecture.png]
 - **Subsystem Block Diagram**\
   ![Block Diagram][image:block\_diagram]
 - **Sample Results**\
   ![Results Overview][image:results\_overview]
 
-**📝 Core MATLAB Scripts**
-
-**runSimulation.m**
-
-function runSimulation(cycleName)\
-`    `if nargin < 1, cycleName = 'US06'; end\
-`    `load(['model/data/DriveCycle.mat'], cycleName);\
-`    `simIn = Simulink.SimulationInput('model/ParallelHEV');\
-`    `simIn = simIn.setVariable('DriveCycleData', eval(cycleName));\
-`    `simIn = simIn.setModelParameter('StopTime','DriveCycleData.time(end)');\
-`    `simOut = sim(simIn);\
-`    `save('ParallelHEV\_SimulationData.mat','simOut','cycleName');\
-end
-
-**analyzeResults.m**
-
-function results = analyzeResults(dataFile)\
-`    `S = load(dataFile,'simOut','cycleName');\
-`    `logs = S.simOut.logsout;\
-`    `results.speed = logs.getElement('VehicleSpeed').Values.Data;\
-`    `results.time  = logs.getElement('VehicleSpeed').Values.Time;\
-`    `results.enginePower = logs.getElement('EnginePower').Values.Data;\
-`    `results.motorPower  = logs.getElement('MotorPower').Values.Data;\
-`    `results.SOC         = logs.getElement('BatterySOC').Values.Data;\
-`    `figure; plot(results.time, results.speed, 'k-', ...\
-`                 `results.time, logs.getElement('DriveCycle').Values.Data,'g--');\
-`    `legend('Actual Speed','Drive Cycle'); xlabel('Time (s)'); ylabel('Speed (km/h)');\
-end
 
 **✅ Testing**
 
 Run unit tests to verify model integrity:
 
 matlab -batch "cd tests; testModelLoad; testSimulationOutputs; exit"
-
-**🤝 Contributing**
-
-- Fork the repo and create a feature branch.
-- Add or improve subsystem library blocks.
-- Update tests under tests/.
-- Submit a pull request with detailed description.
 
 **📄 License**
 
